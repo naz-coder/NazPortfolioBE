@@ -2,12 +2,15 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const app = express();
 const cors = require("cors");
+const hpp = require("hpp");
 require("dotenv").config();
 
 // Let the app use cors as middleware
 app.use(express.json());
-app.use(cors());
-app.options("*", cors);
+// app.use(cors());
+// app.options("*", cors);
+app.use(cors({ origin: "*", credentials: true}));
+app.use(hpp());
 
 // Nodemailer setup for transporter object
 let transporter = nodemailer.createTransport({
