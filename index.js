@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 
-// Let the app use cors as a middleware
+// Let the app use cors as middleware
 app.use(express.json());
 app.use(cors());
 app.options("*", cors);
@@ -29,6 +29,9 @@ transporter.verify((err, success) => {
 });
 
 // Routing the nodemailer for accessibility through the Frontend
+app.get("/", function(req, res){
+    res.send("Welcome to NazPortpolio API.")
+})
 app.post("/send", function (req, res) {
   // Nodemailer setup for mailOptions object
   let mailOptions = {
@@ -54,3 +57,5 @@ const port = +process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
+module.exports = app;
