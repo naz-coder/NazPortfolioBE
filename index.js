@@ -6,11 +6,11 @@ const hpp = require("hpp");
 require("dotenv").config();
 
 // Let the app use cors as middleware
-const corsOptions = {
-  origin: 'https://nazanajemba.vercel.app',
-};
-app.use(express.json());
-// app.use(cors({ origin: "*", credentials: true}));
+// const corsOptions = {
+//   origin: 'https://nazanajemba.vercel.app',
+// };
+// app.use(express.json());
+app.use(cors({ origin: "https://nazanajemba.vercel.app", credentials: true}));
 app.use(cors(corsOptions));
 app.use(hpp());
 
