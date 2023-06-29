@@ -7,7 +7,7 @@ require("dotenv").config();
 
 // Let the app use cors as middleware
 const corsOptions = {
-  origin: 'https://nazanajemba.vercel.app/',
+  origin: 'https://nazanajemba.vercel.app',
 };
 app.use(express.json());
 // app.use(cors({ origin: "*", credentials: true}));
