@@ -33,7 +33,7 @@ transporter.verify((err, success) => {
 
 // Routing the nodemailer for accessibility through the Frontend
 app.get("/", function(req, res){
-    // res.send("Welcome to NazPortpolio API.")
+    res.send("Welcome to NazPortpolio API.")
 })
 app.post("/send", function (req, res) {
   // Nodemailer setup for mailOptions object
