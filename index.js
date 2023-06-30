@@ -9,9 +9,9 @@ require("dotenv").config();
 const corsOptions = {
   origin: 'https://nazanajemba.vercel.app',
 };
-// app.use(express.json());
+app.use(express.json());
 // app.use(cors({ origin: "https://nazanajemba.vercel.app", credentials: true}));
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(hpp());
 
 // Nodemailer setup for transporter object
