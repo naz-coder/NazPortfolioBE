@@ -14,17 +14,19 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(hpp());
 
+const nm_config = {
+  type: "OAuth2",
+  user: process.env.EMAIL,
+  pass: process.env.WORD,
+  clientId: process.env.OAUTH_CLIENTID,
+  clientSecret: process.env.OAUTH_CLIENT_SECRET,
+  refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+}
+console.log(nm_config, 'nm_config');
 // Nodemailer setup for transporter object
 let transporter = nodemailer.createTransport({
   service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.EMAIL,
-    pass: process.env.WORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-  },
+  auth: nm_config,
 });
 
 transporter.verify((err, success) => {
@@ -49,6 +51,7 @@ app.post("/send", function (req, res) {
   // Nodemailer setup for sendMail method
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
+      console.log("Backend Error:", err)
       res.json({ status: "fail" });
     } else {
       console.log(`=== Message sent successfully! ===`);
